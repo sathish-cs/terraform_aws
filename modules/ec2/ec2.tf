@@ -11,6 +11,14 @@ module "ec2_bastion" {
   subnet_id = var.public_subnets
 }
 
+# Create EIP for bastion server
+
+resource "aws_eip" "bastion_eip" {
+  depends_on = [ var.vpc ]
+  instance = module.ec2_bastion.id[0]
+  vpc      = true
+}
+
 # Create app instances in private subnets
 
 module "ec2_private" {
