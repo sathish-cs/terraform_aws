@@ -12,7 +12,7 @@
       to_port     = 3306
       protocol    = "tcp"
       description = "MySQL access from within VPC"
-      cidr_blocks = "0.0.0.0/0"
+      cidr_blocks = "0.0.0.0/0" # need to change this to application cidr block.
     },
   ]
 
