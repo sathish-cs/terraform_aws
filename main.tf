@@ -7,16 +7,16 @@ module "ec2" {
   vpc = module.vpc.vpc
   cidr = module.vpc.vpc_cidr
   public_subnets = module.vpc.public_subnet[0]
+  alb_subnets = [module.vpc.public_subnet[0],module.vpc.public_subnet[1]]
   private_subnets = module.vpc.private_subnet
   sg_private =  ""
   sg_public = ""
 }
 
-module "alb" {
+module "rds" {
+  source = "./modules/rds"
+  cidr = module.vpc.vpc_cidr
   vpc = module.vpc.vpc
-  ec2_id = module.ec2.webservers_id
-  public_subnets = module.vpc.public_subnet
-  private_subnets = module.vpc.private_subnet
-  //lb_sg = module.ec2.lb_sg
-  source = "./modules/alb"
+  db_subnets = module.vpc.db_subnets
+  
 }
