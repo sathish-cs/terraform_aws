@@ -10,7 +10,7 @@ module "vpc" {
   
 
 # Enable NAT GW  
-  enable_nat_gateway = false
+  enable_nat_gateway = true
     single_nat_gateway  = true
 
 
