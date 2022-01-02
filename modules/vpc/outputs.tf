@@ -13,3 +13,7 @@ output "private_subnet" {
 output "vpc_cidr" {
   value = "module.vpc.cidr"
 }
+
+output "db_subnets" {
+  value = module.vpc.database_subnets
+}
